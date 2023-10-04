@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { setTheme } from 'ngx-bootstrap/utils';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,26 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'tsc-fatigue';
+  constructor(){
+    setTheme('bs5');
+  }
+
+  isNotificationVisible = false;
+
+
+  showNotification() {
+    this.isNotificationVisible = true;
+  }
+
+  closeNotification() {
+    this.isNotificationVisible = false;
+  }
+  
+  // Part for employee
+  selectedShift: string = '1';
+
+  onShiftSelected(shift: string) {
+    this.selectedShift = shift;
+  }
+
 }

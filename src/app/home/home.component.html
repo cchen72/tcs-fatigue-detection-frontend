@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+      <div class="col-content" (click)="toggleEmployeeDetails()">
+          <img src="/assets/user-regular.svg" alt="user" class="img-fluid uniform-size">
+      </div>
+      <h2>{{ employee.id }}</h2>
+    </div>
+    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+      <div class="col-content" (click)="showImage(true)">
+          <img [src]="employee.status" alt="status" class="img-fluid uniform-size status">
+      </div>
+      <h2>Status</h2>
+    </div>
+    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+      <div class="col-content">
+          <img src="/assets/camera-solid.svg" alt="cam" class="img-fluid uniform-size"> 
+      </div>
+      <h2>Cam 1</h2>
+    </div>
+    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+      <div class="col-content">
+          <img src="/assets/camera-solid.svg" alt="cam" class="img-fluid uniform-size">
+      </div>
+      <h2>Cam 1</h2>
+    </div>
+    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+      <div class="col-content">
+          <img src="/assets/camera-solid.svg" alt="cam" class="img-fluid uniform-size">
+      </div>
+      <h2>Cam 1</h2>
+    </div>
+    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+      <div class="col-content">
+          <img src="/assets/camera-solid.svg" alt="cam" class="img-fluid uniform-size">  
+      </div>
+      <h2>Cam 1</h2>
+    </div>
+  </div>
+</div>
+<div *ngIf="showEmployeeDetails" class="popup">
+  <h4>Employee Details</h4>
+  <p>ID: {{ employee.id }}</p>
+  <p>Name: {{ employee.name }}</p>
+  <p>Position: {{ employee.position }}</p>
+  <button (click)="toggleEmployeeDetails()">X</button>
+</div>

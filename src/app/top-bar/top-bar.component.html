@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg">
+  <ul class="navbar-nav w-100 d-flex justify-content-between">
+      <li class="nav-item">
+          <label for="shift-input">Shift:</label>
+          <select id="shift-dropdown" class="form-control form-control-sm dropdown" [(ngModel)]="selectedShift" (change)="onShiftChange()">
+            <option value="1">Shift 1</option>
+            <option value="2">Shift 2</option>
+            <option value="3">Shift 3</option>
+          </select>
+      </li>
+      <li class="nav-item">
+          <label for="date-input">Date:</label>
+          <p class="form-control form-control-sm">{{ dateValue }}</p>
+          <!-- <input id="date-input" type="text" value="2022/07/01" class="form-control form-control-sm"> -->
+      </li>
+      <li class="nav-item">
+          <label for="time-input">Time:</label>
+          <p class="form-control form-control-sm">{{ timeValue }}</p>
+          <!-- <input id="time-input" type="text" value="12:13 AM" class="form-control form-control-sm"> -->
+      </li>
+      <li class="nav-item">
+          <button class="btn btn-sm" (click)="onNotificationButtonClick()">🔔</button>
+      </li>
+  </ul>
+</nav>
