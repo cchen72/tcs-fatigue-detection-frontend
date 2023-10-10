@@ -11,19 +11,19 @@ import { Employee } from '../model/employee.model';
 export class ApiService {
 
   private baseUrl = 'https://tcs-fatigue-detection-ui.azurewebsites.net';
-  private proxyUrl = 'https://cors-anywhere.herokuapp.com';
+  //private proxyUrl = 'https://cors-anywhere.herokuapp.com';
 
 
   constructor(private http: HttpClient) { }
 
   fetchEmployeeById(empId: string): Observable<Employee> {
-    return this.http.get<Employee>(`${this.proxyUrl}/${this.baseUrl}/employee/${empId}`).pipe(
+    return this.http.get<Employee>(`${this.baseUrl}/employee/${empId}`).pipe(
       map(data => new Employee(data))
     );
   }
 
   fetchEmployeesByShift(shift: number): Observable<Employee[]> {
-    return this.http.get<Employee[]>(`${this.proxyUrl}/${this.baseUrl}/shift/${shift}`).pipe(
+    return this.http.get<Employee[]>(`${this.baseUrl}/shift/${shift}`).pipe(
       map(dataArray => dataArray.map(data => new Employee(data)))
     );
   }

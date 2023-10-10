@@ -35,7 +35,7 @@ export class HomeComponent implements OnChanges {
 
     // Fetch employees by shift and set the first employee as the current employee
     this.apiService.fetchEmployeesByShift(shiftNum).subscribe(employees => {
-      console.log('Fetched employees by shift:', employees);
+      //console.log('Fetched employees by shift:', employees);
       if (employees && employees.length > 0) {
         this.employee = employees[0];
       }
