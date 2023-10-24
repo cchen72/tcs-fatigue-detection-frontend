@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ApiService } from '../service/api.service';
 import { Employee } from '../model/employee.model';
 
@@ -20,13 +21,25 @@ export class HomeComponent implements OnChanges {
 
   badStatus = '/assets/face-frown-solid.svg';
   goodStatus = '/assets/face-laugh-solid.svg';
-
-  constructor(private apiService: ApiService) { }
+  video1: SafeResourceUrl;
+  video2: SafeResourceUrl;
+  video3: SafeResourceUrl;
+  video4: SafeResourceUrl;
+  constructor(private apiService: ApiService, private sanitizer: DomSanitizer) {
+    this.video1 = this.getSafeUrl('https://drive.google.com/file/d/1OP02ibRQT8EW34LtYC-MmdgF9balReqA/preview');
+    this.video2 = this.getSafeUrl('https://drive.google.com/file/d/16buEj3YtuYA3FENchMq2UTGsjaLpLWLd/preview');
+    this.video3 = this.getSafeUrl('https://drive.google.com/file/d/1-BNMbEknmvAwz2VAKsyXGN6VrmsJahYs/preview');
+    this.video4 = this.getSafeUrl('https://drive.google.com/file/d/15cdG2UMxkxDEjSuACV7jTKw0S6En_58s/preview');
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['shiftNumber']) {
       this.updateEmployeeInfo();
     }
+  }
+
+  getSafeUrl(url: string): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
   updateEmployeeInfo() {
