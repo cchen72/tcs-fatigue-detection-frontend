@@ -6,30 +6,51 @@ import { Component, Output, EventEmitter, OnInit } from '@angular/core';
   styleUrls: ['./top-bar.component.css']
 })
 export class TopBarComponent implements OnInit {
-  // Part for employee
-  @Output() shiftSelected = new EventEmitter<string>();
-  selectedShift: string = '1';
-  // Part for time and date
-  dateValue = '';
-  timeValue = '';
 
+  // Outputs
+  @Output() shiftSelected = new EventEmitter<string>();
   @Output() notificationButtonClick: EventEmitter<void> = new EventEmitter<void>();
 
+  // Properties
+  selectedShift: string = '1';
+  dateValue = '';
+  timeValue = '';
+  showHistoryFatigue = false;
+  fatigueHistories = [
+    { employeeName: 'John Doe', details: 'Felt drowsy after lunch.', time: '2:00 PM' },
+    { employeeName: 'Richard Roe', details: 'Felt drowsy after lunch.', time: '5:00 PM' },
+    //... more histories
+  ];
+
+  // Lifecycle Hooks
   ngOnInit() {
     this.updateTimeAndDate();
-
-    // Update the timeValue every second (1000 milliseconds)
-    setInterval(() => {
-      this.updateTimeAndDate();
-    }, 1000);
+    this.setupTimeUpdate();
   }
 
+  // Public Methods
   onShiftChange() {
     this.shiftSelected.emit(this.selectedShift);
   }
 
   onNotificationButtonClick() {
     this.notificationButtonClick.emit();
+  }
+
+  toggleHistoryFatigue() {
+    this.showHistoryFatigue = !this.showHistoryFatigue;
+  }
+
+  closeHistory() {
+    this.showHistoryFatigue = false;
+  }
+
+  // Private Utility Methods
+  private setupTimeUpdate() {
+    // Update the timeValue every second (1000 milliseconds)
+    setInterval(() => {
+      this.updateTimeAndDate();
+    }, 1000);
   }
 
   private updateTimeAndDate() {

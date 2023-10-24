@@ -9,6 +9,8 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { NotificationComponent } from './notification/notification.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { NotificationComponent } from './notification/notification.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     AccordionModule.forRoot(),
+    HttpClientModule,
     FormsModule,
   ],
   providers: [],

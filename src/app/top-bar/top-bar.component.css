@@ -25,3 +25,30 @@ label {
     margin: 0 10px;
 }
 
+.history-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 300px; /* Adjust width as needed */
+    background-color: #f9f9f9;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+    overflow-y: auto; /* Allow scrolling if content is long */
+    padding: 20px;
+    z-index: 1000;
+}
+
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: red; /* Change color on hover, if desired */
+}
