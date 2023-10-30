@@ -1,0 +1,15 @@
+.btn {
+    background-color: #8A58C5;
+    border: none;
+    color: #fff;
+}
+
+.btn:hover, .btn:focus, .btn:active {
+    background-color: #8A58C5;
+    box-shadow: none;
+}
+
+.record{
+    background-color: #8A58C5;
+    color:#fff;
+}

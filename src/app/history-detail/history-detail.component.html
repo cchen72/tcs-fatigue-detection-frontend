@@ -4,66 +4,14 @@
       <a class="navbar-brand" href="#" style="color: white">Recorded Database</a>
     </div>
 </nav>
-<div class="container mt-5">
+<div class="container-fluid">
     <div class="row">
-      <div class="col-md-6">
-        <!-- Left Section -->
-        <div class="card mb-4">
-          <div class="card-body">
-            <div class="d-flex align-items-center mb-3">
-              <i class="fa fa-user-circle fa-5x mr-3"></i>
-              <div>
-                <div><strong>Name:</strong> </div>
-                <div><strong>EmpID:</strong> </div>
-                <div><strong>Shift:</strong> </div>
-                <div><strong>Designation:</strong> </div>
-              </div>
-            </div>
-            <div class="mb-3">
-              <strong>Status Trend</strong>
-              <!-- Insert your chart component or library here -->
-            </div>
-            <div>
-              <strong>Not Fatigue:</strong> 0<br>
-              <strong>Fatigue:</strong> 1<br>
-              <strong>Date:</strong> 12/10/2023
-            </div>
-          </div>
+        <div class="col-6">
+            <app-user-details></app-user-details>
+            <app-status-trend></app-status-trend>
         </div>
-      </div>
-      <div class="col-md-6">
-        <!-- Right Section -->
-        <div class="card">
-          <div class="card-header">
-            Recorded Database
-          </div>
-          <div class="card-body">
-            <div class="mb-3">
-              <strong>Last 7 days record</strong>
-            </div>
-            <div class="mb-3">
-              <strong>Last 15 days record</strong>
-            </div>
-            <div class="mb-3">
-              <strong>Last Month Record</strong>
-            </div>
-            <div class="list-group">
-              <a href="#" class="list-group-item list-group-item-action">
-                Not Fatigue 10:00am 12/10/2023
-              </a>
-              <a href="#" class="list-group-item list-group-item-action">
-                Not Fatigue 11:00am 12/10/2023
-              </a>
-              <a href="#" class="list-group-item list-group-item-action">
-                Not Fatigue 12:00pm 12/10/2023
-              </a>
-              <a href="#" class="list-group-item list-group-item-action">
-                Fatigue 1:00pm 12/10/2023
-              </a>
-            </div>
-          </div>
+        <div class="col-6">
+            <app-history-filter></app-history-filter>
         </div>
-      </div>
     </div>
-  </div>
-  
+</div>

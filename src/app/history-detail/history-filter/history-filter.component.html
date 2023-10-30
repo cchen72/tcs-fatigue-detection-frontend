@@ -1,0 +1,31 @@
+<!-- <div class="btn-group-vertical" >
+    <button class="btn btn-primary mb-2">Last 7 days Record</button>
+    <button class="btn btn-primary mb-2">Last 15 days Record</button>
+    <button class="btn btn-primary mb-2">Last Month Record</button>
+</div> -->
+
+<div class="d-grid gap-2 col-10 mx-auto mt-4 mb-5">
+    <button class="btn mt-3" type="button">Last 7 days Record</button>
+    <button class="btn mt-3" type="button">Last 15 days Record</button>
+    <button class="btn mt-3" type="button">Last Month Record</button>
+</div>
+
+<div *ngFor="let record of records" class="record mt-2">
+    <div class="row">
+        <div class="col-4">
+            <img [src]="record.img" alt="Record Image" class="record-img">
+        </div>
+        <div class="col-8">
+            <div class="record-info">
+                {{ record.status }}
+            </div>
+            <div class="record-info">
+                {{ record.time }}
+            </div>
+            <div class="record-info">
+                {{ record.date }}
+            </div>
+        </div>
+    </div>
+</div>
+

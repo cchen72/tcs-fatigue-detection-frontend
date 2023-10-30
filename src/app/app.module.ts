@@ -12,7 +12,9 @@ import { NotificationComponent } from './main/notification/notification.componen
 import { HttpClientModule } from '@angular/common/http';
 import { HistoryDetailComponent } from './history-detail/history-detail.component';
 import { MainComponent } from './main/main.component';
-import { UserDetailsComponent } from './user-details/user-details.component';
+import { UserDetailsComponent } from './history-detail/user-details/user-details.component';
+import { StatusTrendComponent } from './history-detail/status-trend/status-trend.component';
+import { HistoryFilterComponent } from './history-detail/history-filter/history-filter.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { UserDetailsComponent } from './user-details/user-details.component';
     NotificationComponent,
     HistoryDetailComponent,
     MainComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    StatusTrendComponent,
+    HistoryFilterComponent
   ],
   imports: [
     BrowserModule,
