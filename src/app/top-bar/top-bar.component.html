@@ -19,7 +19,7 @@
           <!-- <input id="time-input" type="text" value="12:13 AM" class="form-control form-control-sm"> -->
       </li>
       <li class="nav-item">
-          <button class="btn btn-sm" (click)="onNotificationButtonClick()" (click)="toggleHistoryFatigue()">🔔</button>
+          <button class="btn btn-sm" (click)="onNotificationButtonClick()" (click)="toggleHistoryFatigue()">🔔History</button>
       </li>
   </ul>
 </nav>
@@ -29,7 +29,9 @@
     <h5>Fatigue History</h5>
     <div *ngFor="let history of fatigueHistories">
         <hr>
-        <p><strong>Name:</strong> {{ history.employeeName }}</p>
+        <p><strong>Name:</strong>
+            <a [routerLink]="['history']"> {{ history.employeeName }}</a>
+        </p>
         <p><strong>Details:</strong> {{ history.details }}</p>
         <p><strong>Time:</strong> {{ history.time }}</p>
     </div>

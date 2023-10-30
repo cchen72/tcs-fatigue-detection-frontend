@@ -10,11 +10,11 @@
       <div class="col-content" (click)="toggleEmployeeStatus()">
           <img [src]="employeeStatusImage" alt="status" class="img-fluid uniform-size status">
       </div>
-      <h2>Status</h2>
+      <h2>{{ employeeStatusText | uppercase}}</h2>
     </div>
     <div class="col-lg-2 col-md-3 col-sm-4 col-6">
       <div class="col-content">
-        <iframe [src]= "video1" frameborder="0" allowfullscreen allow="autoplay" class="img-fluid uniform-size"></iframe>
+        <iframe [src]= "video1" frameborder="0" allowfullscreen allow="autoplay; muted" class="img-fluid uniform-size"></iframe>
         <!-- <img src="/assets/camera-solid.svg" alt="cam" class="img-fluid uniform-size">  -->
       </div>
       <h2>Cam 1</h2>
