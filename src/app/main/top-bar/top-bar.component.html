@@ -30,7 +30,7 @@
     <div *ngFor="let history of fatigueHistories">
         <hr>
         <p><strong>Name:</strong>
-            <a [routerLink]="['history']"> {{ history.employeeName }}</a>
+            <a [routerLink]="['/history', history.employeeName]"> {{ history.employeeName }}</a>
         </p>
         <p><strong>Details:</strong> {{ history.details }}</p>
         <p><strong>Time:</strong> {{ history.time }}</p>

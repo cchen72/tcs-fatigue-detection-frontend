@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { ApiService } from '../service/api.service';
-import { Employee } from '../model/employee.model';
+import { ApiService } from '../../service/api.service';
+import { Employee } from '../../model/employee.model';
 
 @Component({
   selector: 'app-home',

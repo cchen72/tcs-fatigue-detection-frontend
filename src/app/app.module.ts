@@ -4,14 +4,15 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { TopBarComponent } from './top-bar/top-bar.component';
+import { HomeComponent } from './main/home/home.component';
+import { TopBarComponent } from './main/top-bar/top-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
-import { NotificationComponent } from './notification/notification.component';
+import { NotificationComponent } from './main/notification/notification.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HistoryDetailComponent } from './history-detail/history-detail.component';
 import { MainComponent } from './main/main.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { MainComponent } from './main/main.component';
     TopBarComponent,
     NotificationComponent,
     HistoryDetailComponent,
-    MainComponent
+    MainComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
