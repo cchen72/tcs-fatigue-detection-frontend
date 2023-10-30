@@ -11,7 +11,7 @@ export class Employee {
       this.emp_name = data.emp_name;
       this.emp_position = data.emp_position;
       this.emp_shift = data.emp_shift;
-      this.status = data.status || false;
+      this.status = data.status || true;
     }
   }
   

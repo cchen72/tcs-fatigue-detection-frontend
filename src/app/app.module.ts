@@ -10,6 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { NotificationComponent } from './notification/notification.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HistoryDetailComponent } from './history-detail/history-detail.component';
+import { MainComponent } from './main/main.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     HomeComponent,
     TopBarComponent,
-    NotificationComponent
+    NotificationComponent,
+    HistoryDetailComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,

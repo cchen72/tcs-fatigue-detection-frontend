@@ -16,8 +16,9 @@ export class HomeComponent implements OnChanges {
     emp_name: 'John Doe',
     emp_position: 'Software Developer',
     emp_shift: 1,
-    status: false,
+    status: true,
   });
+  fatigueSatatus = 'fatigue' || 'healthy';
 
   badStatus = '/assets/face-frown-solid.svg';
   goodStatus = '/assets/face-laugh-solid.svg';
@@ -67,6 +68,9 @@ export class HomeComponent implements OnChanges {
 
   get employeeStatusImage(): string {
     return this.employee.status ? this.goodStatus : this.badStatus;
+  }
+  get employeeStatusText(): string {
+    return this.employee.status ? 'healthy' : 'fatigue';
   }
 
   toggleEmployeeStatus() {
