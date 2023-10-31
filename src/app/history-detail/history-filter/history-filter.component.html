@@ -10,20 +10,22 @@
     <button class="btn mt-3" type="button">Last Month Record</button>
 </div>
 
-<div *ngFor="let record of records" class="record mt-2">
-    <div class="row">
-        <div class="col-4">
-            <img [src]="record.img" alt="Record Image" class="record-img">
-        </div>
-        <div class="col-8">
-            <div class="record-info">
-                {{ record.status }}
+<div class="records-container">
+    <div *ngFor="let record of records" class="record mt-2">
+        <div class="row">
+            <div class="col-4 image-container">
+                <img [src]="record.img" alt="Record Image" class="record-img">
             </div>
-            <div class="record-info">
-                {{ record.time }}
-            </div>
-            <div class="record-info">
-                {{ record.date }}
+            <div class="col-6 ms-5">
+                <div class="record-info">
+                    {{ record.status }}
+                </div>
+                <div class="record-info">
+                    {{ record.time }}
+                </div>
+                <div class="record-info">
+                    {{ record.date }}
+                </div>
             </div>
         </div>
     </div>

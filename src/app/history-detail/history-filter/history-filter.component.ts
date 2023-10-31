@@ -7,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoryFilterComponent implements OnInit {
   records = [
-    { status: 'Not Fatigue', time: '10:00am', date: '12/10/2023', img: '/src/assets/camera-solid.svg' },
-    { status: 'Not Fatigue', time: '11:00am', date: '12/10/2023', img: '/src/assets/camera-solid.svg' },
-    { status: 'Not Fatigue', time: '12:00pm', date: '12/10/2023', img: '/src/assets/camera-solid.svg' },
-    { status: 'Fatigue', time: '1:00pm', date: '12/10/2023', img: '/src/assets/camera-solid.svg' },
+    { status: 'Not Fatigue', time: '10:00am', date: '12/10/2023', img: '/assets/no-image.png' },
+    { status: 'Not Fatigue', time: '11:00am', date: '12/10/2023', img: '/assets/no-image.png' },
+    { status: 'Not Fatigue', time: '12:00pm', date: '12/10/2023', img: '/assets/no-image.png' },
+    { status: 'Fatigue', time: '1:00pm', date: '12/10/2023', img: '/assets/no-image.png' },
+    { status: 'Fatigue', time: '2:00pm', date: '12/10/2023', img: '/assets/no-image.png' },
+    { status: 'Fatigue', time: '3:00pm', date: '12/10/2023', img: '/assets/no-image.png' },
+
     // ... additional records here
   ];
   constructor() { }
