@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { EmployeeDataService } from '../service/employee-data.service';
 
 @Component({
   selector: 'app-history-detail',
@@ -9,14 +10,13 @@ import { ActivatedRoute } from '@angular/router';
 export class HistoryDetailComponent implements OnInit {
   employeeName!: string;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private employeeDataService: EmployeeDataService) {}
 
-  ngOnInit() {
-    const name = this.route.snapshot.paramMap.get('name');
-    if (name) {
-      this.employeeName = name;
-    } else {  // Handle the error
-      console.error('No name was provided.');
-    }
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.employeeName = params['name'];
+      //console.log('Employee name: ', this.employeeName);
+      this.employeeDataService.changeEmployeeName(this.employeeName);
+    });
   }
 }

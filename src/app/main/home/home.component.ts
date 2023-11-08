@@ -44,20 +44,25 @@ export class HomeComponent implements OnChanges {
   }
 
   updateEmployeeInfo() {
-    // Convert shiftNumber string to number
-    const shiftNum = Number(this.shiftNumber);
+  // Convert shiftNumber string to number
+  const shiftNum = Number(this.shiftNumber);
 
-    // Fetch employees by shift and set the first employee as the current employee
-    this.apiService.fetchEmployeesByShift(shiftNum).subscribe(employees => {
+  // Fetch employees by shift and set the first employee as the current employee
+  this.apiService.fetchEmployeesByShift(shiftNum).subscribe({
+    next: (employees) => {
       //console.log('Fetched employees by shift:', employees);
       if (employees && employees.length > 0) {
         this.employee = employees[0];
       }
-    }, error => {
+    },
+    error: (error) => {
       console.error('Failed to fetch data by shift:', error);
-    });
+    },
+    complete: () => {
+      // Code to execute when the observable completes, if necessary
+    }
+  });
   }
-  
 
   //PART for status
   showEmployeeDetails = false; // 控制员工信息的显示

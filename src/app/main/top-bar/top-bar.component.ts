@@ -1,4 +1,6 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+// import { EmployeeDataService } from '../../service/employee-data.service';
 
 @Component({
   selector: 'app-top-bar',
@@ -6,6 +8,7 @@ import { Component, Output, EventEmitter, OnInit } from '@angular/core';
   styleUrls: ['./top-bar.component.css']
 })
 export class TopBarComponent implements OnInit {
+  constructor(private router: Router) {}
 
   // Outputs
   @Output() shiftSelected = new EventEmitter<string>();
@@ -21,6 +24,14 @@ export class TopBarComponent implements OnInit {
     { employeeName: 'Richard Roe', details: 'Felt drowsy after lunch.', time: '5:00 PM' },
     //... more histories
   ];
+  employeeNames = ['John Doe', 'Jane Smith', 'Bob Johnson', 'Richard Roe'];
+
+  onEmployeeSelect(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    const employeeName = selectElement.value;
+    this.router.navigate(['/history', employeeName]);
+    
+  }
 
   // Lifecycle Hooks
   ngOnInit() {

@@ -8,6 +8,14 @@
             <option value="3">Shift 3</option>
           </select>
       </li>
+
+      <li class="nav-item">
+        <label for="employee-dropdown">Employee:</label>
+        <select id="employee-dropdown" class="form-control form-control-sm dropdown" (change)="onEmployeeSelect($event)">
+            <option *ngFor="let employee of employeeNames" [value]="employee">{{ employee }}</option>
+        </select>
+      </li>
+
       <li class="nav-item">
           <label for="date-input">Date:</label>
           <p class="form-control form-control-sm">{{ dateValue }}</p>
@@ -30,7 +38,8 @@
     <div *ngFor="let history of fatigueHistories">
         <hr>
         <p><strong>Name:</strong>
-            <a [routerLink]="['/history', history.employeeName]"> {{ history.employeeName }}</a>
+            <a> {{ history.employeeName }}</a>
+            <!-- <a [routerLink]="['/history', history.employeeName]"> {{ history.employeeName }}</a> -->
         </p>
         <p><strong>Details:</strong> {{ history.details }}</p>
         <p><strong>Time:</strong> {{ history.time }}</p>
