@@ -8,15 +8,15 @@ import { EmployeeDataService } from '../service/employee-data.service';
   styleUrls: ['./history-detail.component.css']
 })
 export class HistoryDetailComponent implements OnInit {
-  employeeName!: string;
+  employeeId!: string;
 
   constructor(private route: ActivatedRoute, private employeeDataService: EmployeeDataService) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.employeeName = params['name'];
-      //console.log('Employee name: ', this.employeeName);
-      this.employeeDataService.changeEmployeeName(this.employeeName);
+      this.employeeId = params['id'];
+      //console.log('Employee id: ', this.employeeId);
+      this.employeeDataService.changeEmployeeId(this.employeeId);
     });
   }
 }

@@ -1,6 +1,7 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import { EmployeeDataService } from '../../service/employee-data.service';
+import { ApiService } from '../../service/api.service';
+import { List } from '../../model/empList.model';
 
 @Component({
   selector: 'app-top-bar',
@@ -8,7 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./top-bar.component.css']
 })
 export class TopBarComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private apiService: ApiService) {}
+  // Lifecycle Hooks
+  ngOnInit() {
+    this.updateTimeAndDate();
+    this.setupTimeUpdate();
+    this.getEmployeeList();
+  }
 
   // Outputs
   @Output() shiftSelected = new EventEmitter<string>();
@@ -24,20 +31,23 @@ export class TopBarComponent implements OnInit {
     { employeeName: 'Richard Roe', details: 'Felt drowsy after lunch.', time: '5:00 PM' },
     //... more histories
   ];
-  employeeNames = ['John Doe', 'Jane Smith', 'Bob Johnson', 'Richard Roe'];
+
+  employees: List[] = [];
 
   onEmployeeSelect(event: Event): void {
     const selectElement = event.target as HTMLSelectElement;
-    const employeeName = selectElement.value;
-    this.router.navigate(['/history', employeeName]);
+    const employeeId = selectElement.value;
+    this.router.navigate(['/history', employeeId]);
     
   }
 
-  // Lifecycle Hooks
-  ngOnInit() {
-    this.updateTimeAndDate();
-    this.setupTimeUpdate();
+  private getEmployeeList() {
+    this.apiService.fetchAllEmployee().subscribe(data => {
+      this.employees = data.map(item => new List(item));
+      console.log('Employee Records: ', this.employees);
+    });
   }
+  
 
   // Public Methods
   onShiftChange() {

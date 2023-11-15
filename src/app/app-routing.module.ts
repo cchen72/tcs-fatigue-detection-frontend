@@ -5,7 +5,7 @@ import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
-  { path: 'history/:name', component: HistoryDetailComponent },
+  { path: 'history/:id', component: HistoryDetailComponent },
 ];
 
 @NgModule({

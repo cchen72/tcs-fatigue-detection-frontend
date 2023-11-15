@@ -12,7 +12,9 @@
       <li class="nav-item">
         <label for="employee-dropdown">Employee:</label>
         <select id="employee-dropdown" class="form-control form-control-sm dropdown" (change)="onEmployeeSelect($event)">
-            <option *ngFor="let employee of employeeNames" [value]="employee">{{ employee }}</option>
+            <option *ngFor="let employee of employees" [value]="employee.emp_id">
+                {{ employee.emp_name }}
+            </option>
         </select>
       </li>
 

@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { Employee } from '../model/employee.model';
 import {FatigueHistory} from '../model/history.model';
+import { List } from '../model/empList.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,20 +18,33 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   fetchEmployeeById(empId: string): Observable<Employee> {
-    return this.http.get<Employee>(`${this.baseUrl}/employee/${empId}`).pipe(
-      map(data => new Employee(data))
+    return this.http.get<Employee[]>(`${this.baseUrl}/employee/empId/${empId}`).pipe(
+      map(dataArray => dataArray.length > 0 ? new Employee(dataArray[0]) : new Employee({}))
     );
   }
 
   fetchEmployeesByShift(shift: number): Observable<Employee[]> {
-    return this.http.get<Employee[]>(`${this.baseUrl}/shift/${shift}`).pipe(
+    return this.http.get<Employee[]>(`${this.baseUrl}/shift/shiftId/${shift}`).pipe(
       map(dataArray => dataArray.map(data => new Employee(data)))
     );
   }
 
-  fetchHistoryById(id: number): Observable<FatigueHistory[]> {
-    return this.http.get<FatigueHistory[]>(`${this.baseUrl}/history/${id}`).pipe(
+  fetchHistoryById(id: string): Observable<FatigueHistory[]> {
+    return this.http.get<FatigueHistory[]>(`${this.baseUrl}/history/empId/${id}`).pipe(
       map(dataArray => dataArray.map(data => new FatigueHistory(data)))
     );
   }
+
+  fetchAllEmployee(): Observable<List[]> {
+    return this.http.get<List[]>(`${this.baseUrl}/employee/list`).pipe(
+      map(dataArray => dataArray.map(data => new List(data)))
+    );
+  }
+
+  fetchFatigueRange(duration: string): Observable<FatigueHistory[]> {
+    return this.http.get<FatigueHistory[]>(`${this.baseUrl}/history/duration/${duration}`).pipe(
+      map(dataArray => dataArray.map(data => new FatigueHistory(data)))
+    );
+  }
+
 }

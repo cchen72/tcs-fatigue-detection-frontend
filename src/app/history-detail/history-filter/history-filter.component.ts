@@ -10,7 +10,7 @@ import { FatigueHistory } from '../../model/history.model';
 })
 export class HistoryFilterComponent implements OnInit {
   employeeName: string = '';
-  employeeId: number | null = null;
+  employeeId: string = '';
 
   fatigueRecords: FatigueHistory[] = [];
 
@@ -20,33 +20,65 @@ export class HistoryFilterComponent implements OnInit {
   //   emp_id: '1000101',
   //   fatigue_status: 0,
   // });
-  
-  records = [
-    { status: 'Not Fatigue', time: '10:00am', date: '12/10/2023', img: '/assets/no-image.png' },
-    { status: 'Not Fatigue', time: '11:00am', date: '12/10/2023', img: '/assets/no-image.png' },
-    { status: 'Not Fatigue', time: '12:00pm', date: '12/10/2023', img: '/assets/no-image.png' },
-    { status: 'Fatigue', time: '1:00pm', date: '12/10/2023', img: '/assets/no-image.png' },
-    { status: 'Fatigue', time: '2:00pm', date: '12/10/2023', img: '/assets/no-image.png' },
-    { status: 'Fatigue', time: '3:00pm', date: '12/10/2023', img: '/assets/no-image.png' },
+  records: any[] = [];
 
-    // ... additional records here
-  ];
+  // records = [
+  //   { status: 'Not Fatigue', time: '10:00am', date: '12/10/2023', img: '/assets/no-image.png' },
+  //   { status: 'Not Fatigue', time: '11:00am', date: '12/10/2023', img: '/assets/no-image.png' },
+  //   { status: 'Not Fatigue', time: '12:00pm', date: '12/10/2023', img: '/assets/no-image.png' },
+  //   { status: 'Fatigue', time: '1:00pm', date: '12/10/2023', img: '/assets/no-image.png' },
+  //   { status: 'Fatigue', time: '2:00pm', date: '12/10/2023', img: '/assets/no-image.png' },
+  //   { status: 'Fatigue', time: '3:00pm', date: '12/10/2023', img: '/assets/no-image.png' },
+  // ];
   constructor(private employeeDataService: EmployeeDataService, private apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.employeeDataService.currentEmployeeName.subscribe(name => {
-      this.employeeName = name;
-    });
-  
     this.employeeDataService.currentEmployeeId.subscribe(id => {
-      // Use a default value if `id` is null
-      const validId = id ?? 1000101; // Replace `0` with your desired default number
-      this.employeeId = validId;
-      
-      this.apiService.fetchHistoryById(validId).subscribe(data => {
-        this.fatigueRecords = data.map(item => new FatigueHistory(item));
-        console.log('Fatigue Records: ', this.fatigueRecords);
-      });
+      this.employeeId = id;
+      console.log('Employee id: ', this.employeeId); 
     });
+    //this.getFatigueById();
+    this.getFatigueByRange("month");
+  }
+
+  private async getFatigueById() {
+    this.apiService.fetchHistoryById(this.employeeId).subscribe(data => {
+      this.fatigueRecords = data.map(item => new FatigueHistory(item));
+      console.log('Fatigue Records: ', this.fatigueRecords);
+      this.transformRecords();
+    });
+  }
+
+  private async getFatigueByRange(range: string) {
+    this.apiService.fetchFatigueRange(range).subscribe(data => {
+      this.fatigueRecords = data
+      .filter(item => item.emp_id === this.employeeId) // Filter step
+      .map(item => new FatigueHistory(item));
+      console.log('Fatigue Records: ', this.fatigueRecords);
+      this.transformRecords();
+    });
+  }
+
+  private transformRecords(): void {
+    console.log();
+    this.records = this.fatigueRecords.map(fatigueRecord => {
+      return {
+        status: fatigueRecord.fatigue_status === 0 ? 'Not Fatigue' : 'Fatigue',
+        time: this.extractTime(fatigueRecord.timestamp),
+        date: this.extractDate(fatigueRecord.timestamp),
+        img: '/assets/no-image.png' // Assuming a default image for all records
+      };
+    });
+    console.log('Records: ', this.records);
+  }
+
+  private extractDate(timestamp: string): string {
+    const date = new Date(timestamp);
+    return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+  }
+
+  private extractTime(timestamp: string): string {
+    const date = new Date(timestamp);
+    return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
   }
 }

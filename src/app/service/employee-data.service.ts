@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class EmployeeDataService {
   private employeeNameSource = new BehaviorSubject<string>('');
-  private employeeIdSource = new BehaviorSubject<number | null>(null);
+  private employeeIdSource = new BehaviorSubject<string>('');
 
   currentEmployeeName = this.employeeNameSource.asObservable();
   currentEmployeeId = this.employeeIdSource.asObservable();
@@ -17,7 +17,7 @@ export class EmployeeDataService {
     this.employeeNameSource.next(name);
   }
   
-  changeEmployeeId(id: number) {
+  changeEmployeeId(id: string) {
     this.employeeIdSource.next(id);
   }
 }
