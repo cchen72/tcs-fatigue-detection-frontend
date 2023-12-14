@@ -5,24 +5,26 @@
     background-color: #8A58C5;
     color: white;
     margin: 10px;
-    padding: 5px 10px;
+    padding: 5px 5px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.nav-item:nth-child(1) { flex: 5; }
+.nav-item:nth-child(1) { flex: 3; }
 .nav-item:nth-child(2) { flex: 3; }
-.nav-item:nth-child(3) { flex: 3; }
-.nav-item:nth-child(4) { flex: 1; }
+.nav-item:nth-child(3) { flex: 2; }
+.nav-item:nth-child(4) { flex: 2; }
+.nav-item:nth-child(5) { flex: 2; }
+
 
 .form-control {
     text-align: center; /* 添加此属性以居中输入框的文本 */
     max-width: 70%;
-    margin: 0 10px;
+    margin: 0 5px;
 }
 
 label {
-    margin: 0 10px;
+    margin: 0 5px;
 }
 
 .history-sidebar {

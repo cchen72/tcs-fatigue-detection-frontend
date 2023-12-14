@@ -3,23 +3,30 @@
       <li class="nav-item">
           <label for="shift-input">Shift:</label>
           <select id="shift-dropdown" class="form-control form-control-sm dropdown" [(ngModel)]="selectedShift" (change)="onShiftChange()">
-            <option value="1">Shift 1</option>
-            <option value="2">Shift 2</option>
-            <option value="3">Shift 3</option>
+            <option *ngFor="let shift of shifts" [value]="shift">Shift {{ shift }}</option>
           </select>
       </li>
+
+      <li class="nav-item">
+        <label for="employee-dropdown">Employee:</label>
+        <select id="employee-dropdown" class="form-control form-control-sm dropdown" (change)="onEmployeeSelect($event)">
+            <option value="" disabled selected>Select Employee</option>
+            <option *ngFor="let employee of employees" [value]="employee.emp_id">
+                {{ employee.emp_name }}
+            </option>
+        </select>
+      </li>
+
       <li class="nav-item">
           <label for="date-input">Date:</label>
           <p class="form-control form-control-sm">{{ dateValue }}</p>
-          <!-- <input id="date-input" type="text" value="2022/07/01" class="form-control form-control-sm"> -->
       </li>
       <li class="nav-item">
           <label for="time-input">Time:</label>
           <p class="form-control form-control-sm">{{ timeValue }}</p>
-          <!-- <input id="time-input" type="text" value="12:13 AM" class="form-control form-control-sm"> -->
       </li>
       <li class="nav-item">
-          <button class="btn btn-sm" (click)="onNotificationButtonClick()" (click)="toggleHistoryFatigue()">🔔History</button>
+          <button class="btn btn-sm" (click)="toggleHistoryFatigue()">🔔History</button>
       </li>
   </ul>
 </nav>
@@ -27,12 +34,11 @@
 <div *ngIf="showHistoryFatigue" class="history-sidebar">
     <button class="close-btn" (click)="closeHistory()">✖</button>
     <h5>Fatigue History</h5>
-    <div *ngFor="let history of fatigueHistories">
+    <div *ngFor="let history of records">
         <hr>
-        <p><strong>Name:</strong>
-            <a [routerLink]="['history']"> {{ history.employeeName }}</a>
-        </p>
-        <p><strong>Details:</strong> {{ history.details }}</p>
+        <p><strong>ID:</strong> {{ history.id }}</p>
+        <!-- <p><strong>Details:</strong> {{ history.details }}</p> -->
+        <p><strong>Date:</strong> {{ history.date }}</p>
         <p><strong>Time:</strong> {{ history.time }}</p>
     </div>
 </div>

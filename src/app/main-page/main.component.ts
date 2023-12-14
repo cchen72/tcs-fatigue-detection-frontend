@@ -16,9 +16,9 @@ export class MainComponent {
         this.isNotificationVisible = false;
     }
 
-    selectedShift: string = '1';
+    selectedShift: number = 1;
 
-    onShiftSelected(shift: string) {
+    onShiftSelected(shift: number) {
         this.selectedShift = shift;
     }
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-notification',
@@ -6,6 +6,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./notification.component.css']
 })
 export class NotificationComponent {
+  @Input() shiftNumber!: number;
   @Output() closeNotificationClick: EventEmitter<void> = new EventEmitter<void>();
 
   closeNotification() {

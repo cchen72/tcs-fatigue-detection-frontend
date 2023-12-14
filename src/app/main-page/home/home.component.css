@@ -20,6 +20,7 @@
 .col-content {
     border: solid #8A58C5 2px;  /* 紫色边框 */
     border-radius: 5px;    /* 轻微的圆角 */
+    height: 100%;
 }
 
 
