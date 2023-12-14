@@ -7,22 +7,21 @@
       <h2>{{ employee.emp_id }}</h2>
     </div>
     <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-      <div class="col-content" (click)="toggleEmployeeStatus()">
-          <img [src]="employeeStatusImage" alt="status" class="img-fluid uniform-size status">
+      <div class="col-content">
+          <!-- <img [src]="employeeStatusImage" alt="status" class="img-fluid uniform-size status"> -->
+          <app-gauge-dashboard [gaugeValue]="GaugeValue"></app-gauge-dashboard>
       </div>
       <h2>{{ employeeStatusText | uppercase}}</h2>
     </div>
     <div class="col-lg-2 col-md-3 col-sm-4 col-6">
       <div class="col-content">
-        <iframe [src]= "video1" frameborder="0" allowfullscreen allow="autoplay; muted" class="img-fluid uniform-size"></iframe>
-        <!-- <img src="/assets/camera-solid.svg" alt="cam" class="img-fluid uniform-size">  -->
+        <iframe [src]= "video1" frameborder="0" allowfullscreen allow="autoplay" class="img-fluid uniform-size"></iframe>
       </div>
       <h2>Cam 1</h2>
     </div>
     <div class="col-lg-2 col-md-3 col-sm-4 col-6">
       <div class="col-content">
         <iframe [src]= "video2" frameborder="0" allowfullscreen allow="autoplay" class="img-fluid uniform-size"></iframe>
-        <!-- <img src="/assets/camera-solid.svg" alt="cam" class="img-fluid uniform-size"> -->
       </div>
       <h2>Cam 2</h2>
     </div>

@@ -5,15 +5,14 @@ import { map } from 'rxjs/operators';
 
 import { Employee } from '../model/employee.model';
 import {FatigueHistory} from '../model/history.model';
-import { List } from '../model/empList.model';
+import { empList } from '../model/empList.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  private baseUrl = 'https://tcs-fatigue-detection-ui.azurewebsites.net';
-  //private proxyUrl = 'https://cors-anywhere.herokuapp.com';
+  private baseUrl = 'http://52.226.200.101';
 
   constructor(private http: HttpClient) { }
 
@@ -35,9 +34,9 @@ export class ApiService {
     );
   }
 
-  fetchAllEmployee(): Observable<List[]> {
-    return this.http.get<List[]>(`${this.baseUrl}/employee/list`).pipe(
-      map(dataArray => dataArray.map(data => new List(data)))
+  fetchAllEmployee(): Observable<empList[]> {
+    return this.http.get<empList[]>(`${this.baseUrl}/employee/list`).pipe(
+      map(dataArray => dataArray.map(data => new empList(data)))
     );
   }
 
@@ -47,4 +46,7 @@ export class ApiService {
     );
   }
 
+  fetchAllShift(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/shift/shiftNumbers`);
+  }
 }

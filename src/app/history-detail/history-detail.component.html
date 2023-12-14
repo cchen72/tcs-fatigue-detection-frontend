@@ -2,7 +2,7 @@
 <nav class="navbar sticky-top" style="background-color: #8A58C5;">
     <div class="container-fluid justify-content-between">
         <a class="navbar-brand" href="#" style="color: white;">Back</a>
-        <a class="navbar-brand" href="#" style="color: white">Recorded Database</a>
+        <a class="navbar-brand" style="color: white">Recorded Database</a>
         <div class="navbar-brand"></div>
     </div>
 </nav>
@@ -10,10 +10,10 @@
     <div class="row">
         <div class="col-6">
             <app-user-details></app-user-details>
-            <app-status-trend></app-status-trend>
+            <app-status-trend [trendData]="trendData" [duration]="duration"></app-status-trend>
         </div>
         <div class="col-6">
-            <app-history-filter></app-history-filter>
+            <app-history-filter (fatigueRecordsChanged)="onFatigueRecordsChanged($event)"></app-history-filter>
         </div>
     </div>
 </div>

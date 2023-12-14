@@ -1,5 +1,5 @@
 // empList.model.ts
-export class List {
+export class empList {
     emp_id: string;
     emp_name: string;
 

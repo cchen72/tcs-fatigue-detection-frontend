@@ -1,30 +1,24 @@
-<!-- <div class="btn-group-vertical" >
-    <button class="btn btn-primary mb-2">Last 7 days Record</button>
-    <button class="btn btn-primary mb-2">Last 15 days Record</button>
-    <button class="btn btn-primary mb-2">Last Month Record</button>
-</div> -->
-
 <div class="d-grid gap-2 col-10 mx-auto mt-4 mb-5">
-    <button class="btn mt-3" type="button">Last 7 days Record</button>
-    <button class="btn mt-3" type="button">Last 15 days Record</button>
-    <button class="btn mt-3" type="button">Last Month Record</button>
+    <button class="btn mt-3" type="button" (click)="getFatigueByRange('week')">Last 7 days Record</button>
+    <button class="btn mt-3" type="button" (click)="getFatigueByRange('fortnight')">Last 15 days Record</button>
+    <button class="btn mt-3" type="button" (click)="getFatigueByRange('month')">Last Month Record</button>
 </div>
 
 <div class="records-container">
     <div *ngFor="let record of records" class="record mt-2">
         <div class="row">
-            <div class="col-4 image-container">
+            <div class="col-5 image-container">
                 <img [src]="record.img" alt="Record Image" class="record-img">
             </div>
-            <div class="col-6 ms-5">
+            <div class="col-7">
                 <div class="record-info">
-                    {{ record.status }}
+                    Statu: {{ record.status }}
                 </div>
                 <div class="record-info">
-                    {{ record.time }}
+                    Time: {{ record.time }}
                 </div>
                 <div class="record-info">
-                    {{ record.date }}
+                    Date: {{ record.date }}
                 </div>
             </div>
         </div>

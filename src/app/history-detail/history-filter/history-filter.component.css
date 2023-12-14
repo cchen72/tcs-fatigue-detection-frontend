@@ -15,7 +15,7 @@
 }
 
 .records-container {
-    height: 450px; /* or whatever height you'd like */
+    height: 480px; /* or whatever height you'd like */
     overflow-y: auto; /* This makes it scrollable vertically when content exceeds the height */
 }
 
@@ -24,9 +24,13 @@
     height: 80px;
 }
 
+.record-info {
+    padding: 5px 0px;
+}
+
 .image-container {
     display: flex;         /* Enable flexbox for this container */
     justify-content: center;  /* Center items horizontally */
     align-items: center;      /* Center items vertically */
-    padding: 5px;
+    padding: 5px 0px;
 }
