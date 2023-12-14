@@ -1,4 +1,4 @@
-# Tsc-Fatigue-Detection
+# TCS-Fatigue-Detection
 
 This project, "tsc-fatigue", is an Angular application utilizing Angular version 16.0.0. It is configured with a range of dependencies to support various features including animations, forms, routing, and third-party integrations like Bootstrap and Chart.js.
 
